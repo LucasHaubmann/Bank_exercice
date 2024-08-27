@@ -1,6 +1,6 @@
 package application;
 
-import exceptions.BankExeption;
+import exceptions.BankException;
 import modal.entities.Bank;
 import modal.entities.Client;
 
@@ -84,7 +84,7 @@ public class Main {
                         // Realização de saque
                         selectedClient = bank.selectClientByAccountNumber(sc, bank);
                         if (selectedClient == null) {
-                            throw new BankExeption("Error: Selected client does not exist");
+                            throw new BankException("Error: Selected client does not exist");
                         }
                         System.out.print("Enter the amount to withdraw: ");
                         double withdrawAmount = sc.nextDouble();
@@ -97,7 +97,7 @@ public class Main {
                         // Realização de depósito
                         selectedClient = bank.selectClientByAccountNumber(sc, bank);
                         if (selectedClient == null) {
-                            throw new BankExeption("Error: Selected client does not exist");
+                            throw new BankException("Error: Selected client does not exist");
                         }
                         System.out.print("Enter the amount to deposit: ");
                         double depositAmount = sc.nextDouble();
@@ -119,9 +119,9 @@ public class Main {
                         break;
 
                     default:
-                        throw new BankExeption("The chosen option is invalid. Choose between 1 to 6");
+                        throw new BankException("The chosen option is invalid. Choose between 1 to 6");
                 }
-            } catch (BankExeption e) {
+            } catch (BankException e) {
                 // Tratamento de exceções específicas do banco
                 System.out.println(e.getMessage());
             } catch (InputMismatchException e) {
